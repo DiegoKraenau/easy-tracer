@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm --no-git-tag-version version patch && git add .
+npm run lint && npm --no-git-tag-version version patch && git add .

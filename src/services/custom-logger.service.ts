@@ -1,6 +1,6 @@
-import { EMPTY, FORMAT_DATE } from "./../util/constans";
-import { Injectable, Logger, LoggerService } from "@nestjs/common";
-import moment from "moment";
+import { EMPTY, FORMAT_DATE } from './../util/constans';
+import { Injectable, Logger, LoggerService } from '@nestjs/common';
+import moment from 'moment';
 
 @Injectable()
 export class CustomLoggerService implements LoggerService {
@@ -26,19 +26,31 @@ export class CustomLoggerService implements LoggerService {
     this.logger.verbose(`${description} -> ${this.manageEmpty(message)}`);
   }
 
+  /**
+   * Trace request.
+   * @constructor
+   * @param {from} string - Function name.
+   * @param {request} any - Value to show.
+   */
   request?(from: string, request: any) {
     this.logger.verbose(
       `Request - ${from} - ${moment().format(FORMAT_DATE)} -> ${JSON.stringify(
-        request
-      )}`
+        request,
+      )}`,
     );
   }
 
+  /**
+   * Trace response.
+   * @constructor
+   * @param {from} string - Function name.
+   * @param {request} any - Value to show.
+   */
   response?(from: string, request: any) {
     this.logger.verbose(
       `Response - ${from} - ${moment().format(FORMAT_DATE)} -> ${JSON.stringify(
-        request
-      )}`
+        request,
+      )}`,
     );
   }
 
